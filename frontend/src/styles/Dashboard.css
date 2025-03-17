@@ -1,0 +1,269 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f8fbff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0056b3;
+  color: white;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header .header-right {
+  display: flex;
+  gap: 20px;
+  font-size: 16px;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+/* Left Sidebar */
+.left-sidebar {
+  width: 20%;
+  min-width: 250px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: sticky;
+  top: 80px;
+}
+
+/* Circular Progress (Remaining Intake) */
+.remaining-intake-box {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: conic-gradient(#007bff calc(var(--progress, 100) * 1%), #ddd 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+  margin: 20px auto;
+}
+
+.remaining-intake-box::before {
+  content: "";
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  background: white;
+  border-radius: 50%;
+}
+
+.remaining-intake-box span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Section */
+.left-section {
+  flex-grow: 1;
+  min-width: 500px;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stat-box {
+  flex: 1;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.stat-box p {
+  font-size: 14px;
+}
+
+.stat-box h3 {
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.green {
+  background: #28a745;
+}
+
+.blue {
+  background: #007bff;
+}
+
+.orange {
+  background: #ff9800;
+}
+
+/* Chart */
+.chart-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Water Intake Buttons */
+.water-intake {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.water-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.water-buttons button {
+  padding: 10px 20px;
+  border: none;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.water-buttons button:hover {
+  background: #0056b3;
+}
+
+/* Hydration Tips */
+.hydration-tips {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/* Right Section */
+.right-section {
+  width: 20%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bottle-container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bottle-image {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.log-counter {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.log-entry {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.log-entry:last-child {
+  border-bottom: none;
+}
+
+/* Fix Scrolling */
+.dashboard-content {
+  max-height: 80vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-sidebar,
+  .right-section {
+    width: 90%;
+    min-width: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .stats {
+    flex-direction: column;
+  }
+
+  .remaining-intake-box {
+    width: 140px;
+    height: 140px;
+  }
+
+  .remaining-intake-box::before {
+    width: 110px;
+    height: 110px;
+  }
+}

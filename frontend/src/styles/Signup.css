@@ -1,0 +1,144 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body Styling */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #001f3f, #0077b6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Water Animation */
+@keyframes wave {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(50px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+.waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: url('https://i.imgur.com/9lwXaUX.png');
+  background-size: cover;
+  opacity: 0.7;
+  animation: wave 5s infinite linear;
+}
+
+/* Signup Container */
+.signup-container {
+  background: #292929;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 20px #141414, -10px -10px 20px #3a3a3a;
+  width: 350px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  animation: float 4s infinite ease-in-out;
+}
+
+.signup-container:hover {
+  box-shadow: 15px 15px 30px #0d0d0d, -15px -15px 30px #4d4d4d;
+  transform: translateY(-5px);
+}
+
+/* Signup Heading */
+h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #00aaff;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
+}
+
+/* Input Fields */
+input {
+  width: 80%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background: #292929;
+  box-shadow: inset 5px 5px 10px #141414, inset -5px -5px 10px #3a3a3a;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #00aaff;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+/* Signup Button */
+.signup-btn {
+  width: 100%;
+  background: #00aaff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 5px 5px 10px #141414, -5px -5px 10px #3a3a3a;
+}
+
+.signup-btn:hover {
+  background: #0088cc;
+  box-shadow: 0 0 15px #00aaff;
+  transform: scale(1.05);
+}
+
+.signup-btn:active {
+  box-shadow: inset 2px 2px 5px #141414, inset -2px -2px 5px #3a3a3a;
+  transform: scale(0.95);
+}
+
+/* Login Link */
+p {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+p span {
+  color: #00aaff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+p span:hover {
+  text-decoration: underline;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}

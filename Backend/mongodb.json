@@ -1,0 +1,4 @@
+db.movies.insertOne(
+  _id:10,
+  
+);
