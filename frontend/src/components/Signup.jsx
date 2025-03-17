@@ -4,7 +4,7 @@ import "../styles/Signup.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
-  const [errorMessage, setErrorMessage] = useState(""); // State to store error messages
+  const [errorMessage, setErrorMessage] = useState(""); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -14,35 +14,32 @@ const Signup = () => {
   const validateForm = () => {
     const { username, email, password } = formData;
 
-    // Check if fields are empty
     if (!username || !email || !password) {
       return "All fields are required.";
     }
 
-    // Check if username is at least 3 characters long
     if (username.length < 3) {
       return "Username must be at least 3 characters long.";
     }
-
-    // Check if email format is valid
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+   
+    const emailcheck = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailcheck.test(email)) {
       return "Please enter a valid email address.";
     }
 
-    // Check password length
+   
     if (password.length < 6) {
       return "Password must be at least 6 characters long.";
     }
 
-    return null; // No errors
+    return null; 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMessage(""); 
 
-    // Validate the form
+    
     const error = validateForm();
     if (error) {
       setErrorMessage(error);

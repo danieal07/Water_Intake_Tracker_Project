@@ -1,14 +1,4 @@
-/* Water Intake Themed Background */
-/* .login_container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #001f3f, #0077b6);
-} */
 
-/* Neomorphic Box */
 .login_box {
     background: #292929;
     padding: 30px;
@@ -34,7 +24,7 @@
     text-shadow: 0 0 10px rgba(0, 170, 255, 0.8);
 }
 
-/* Input Fields */
+
 input {
     width: 80%;
     padding: 12px;
@@ -57,7 +47,7 @@ input::placeholder {
     color: #aaa;
 }
 
-/* Login Button */
+
 .login-btn {
     width: 100%;
     background: #00aaff;
@@ -83,7 +73,7 @@ input::placeholder {
     transform: scale(0.95);
 }
 
-/* Signup Link */
+
 .signup-link {
     color: #fff;
     font-size: 14px;
@@ -101,7 +91,6 @@ input::placeholder {
     text-decoration: underline;
 }
 
-/* Floating Animation */
 @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
