@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Signup.css";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState(""); // State to store error messages
   const navigate = useNavigate();
 
@@ -12,11 +12,16 @@ const Signup = () => {
   };
 
   const validateForm = () => {
-    const { email, password } = formData;
+    const { username, email, password } = formData;
 
     // Check if fields are empty
-    if (!email || !password) {
+    if (!username || !email || !password) {
       return "All fields are required.";
+    }
+
+    // Check if username is at least 3 characters long
+    if (username.length < 3) {
+      return "Username must be at least 3 characters long.";
     }
 
     // Check if email format is valid
@@ -35,7 +40,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Reset error message before validation
+    setErrorMessage(""); 
 
     // Validate the form
     const error = validateForm();
@@ -70,6 +75,14 @@ const Signup = () => {
       <h2>Create Account</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          name="username" 
+          value={formData.username} 
+          onChange={handleChange} 
+          placeholder="Username" 
+          required 
+        />
         <input 
           type="email" 
           name="email" 

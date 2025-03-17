@@ -8,9 +8,12 @@ const Dashboard = () => {
   const [time, setTime] = useState("");
   const [temperature, setTemperature] = useState(null);
   const [weatherCondition, setWeatherCondition] = useState("");
-  const [remainingWater, setRemainingWater] = useState(2500);
+  const [remainingWater, setRemainingWater] = useState(5000);
   const [intakeData, setIntakeData] = useState([]);
   const [hydrationFact, setHydrationFact] = useState("");
+  const [dailyintake, setdailyintake] = useState(0);
+  const [totalintake, settotalintake] = useState(12000);
+
 
   // Hydration Facts
   const hydrationFacts = [
@@ -21,8 +24,6 @@ const Dashboard = () => {
     "Drinking enough water helps maintain healthy skin.",
     "Water aids in digestion and helps remove toxins.",
   ];
-
-  // Update Time Every Second
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
@@ -38,7 +39,7 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Fetch Weather Data
+  
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(async (position) => {
       const { latitude, longitude } = position.coords;
@@ -47,24 +48,16 @@ const Dashboard = () => {
         const response = await fetch(url);
         const data = await response.json();
         setTemperature(Math.round(data.current_weather.temperature));
-        setWeatherCondition(data.current_weather.weathercode); // This returns a weather condition code
+        setWeatherCondition(data.current_weather.weathercode); 
       } catch (error) {
         console.error("Error fetching weather:", error);
       }
     });
   }, []);
 
-  // Update Hydration Fact Every 10s
-  useEffect(() => {
-    const updateFact = () => {
-      setHydrationFact(hydrationFacts[Math.floor(Math.random() * hydrationFacts.length)]);
-    };
-    updateFact();
-    const factInterval = setInterval(updateFact, 10000);
-    return () => clearInterval(factInterval);
-  }, []);
 
-  // Add Water Intake
+
+  // Water Intake
   const addWater = (amount) => {
     setIntakeData([...intakeData, { time: time, amount }]);
     setRemainingWater((prev) => Math.max(prev - amount, 0));
@@ -86,16 +79,16 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      {/* Header */}
+     
       <div className="header">
-        <h2>Welcome back, <span className="username">Danieal!</span></h2>
+        <h2>WATER INTAKE TRAKER </h2>
         <div className="header-right">
           <span>{time}</span>
           <span>{temperature !== null ? `${temperature}°C - ${weatherCondition}` : "Fetching weather..."}</span>
         </div>
       </div>
 
-      {/* Dashboard Content */}
+
       <div className="dashboard-content">
         {/* Left Sidebar */}
         <div className="left-sidebar">
@@ -110,15 +103,15 @@ const Dashboard = () => {
           <div className="stats">
             <div className="stat-box green">
               <p>Daily Intake</p>
-              <h3>5000 ml</h3>
+              <h3>{dailyintake} ml</h3>
             </div>
             <div className="stat-box blue">
               <p>Average Intake</p>
-              <h3>2500 ml</h3>
+              <h3>3000 ml</h3>
             </div>
             <div className="stat-box orange">
               <p>Total Intake</p>
-              <h3>17000 ml</h3>
+              <h3>{totalintake} ml</h3>
             </div>
           </div>
 
@@ -132,9 +125,9 @@ const Dashboard = () => {
           <div className="water-intake">
             <h3>Log Your Intake</h3>
             <div className="water-buttons">
-              <button onClick={() => addWater(250)}>+250ml</button>
-              <button onClick={() => addWater(500)}>+500ml</button>
-              <button onClick={() => addWater(1000)}>+1000ml</button>
+              <button onClick={() => {addWater(250); setdailyintake(dailyintake+250); settotalintake(totalintake+dailyintake)}}>+250ml</button>
+              <button onClick={() => {addWater(500); setdailyintake(dailyintake+500);settotalintake(totalintake+dailyintake)}}>+500ml</button>
+              <button onClick={() => {addWater(1000); setdailyintake(dailyintake+1000);settotalintake(totalintake+dailyintake)}}>+1000ml</button>
             </div>
           </div>
 
@@ -149,7 +142,7 @@ const Dashboard = () => {
         <div className="right-section">
           <div className="bottle-container">
             <img className="bottle-image" src={Waterbottle} alt="Water Bottle" />
-            <p>Stay Hydrated and Beat the Heat!</p>
+            <p className="hydrated">Stay Hydrated and Beat the Heat!</p>
           </div>
 
           <div className="log-counter">
